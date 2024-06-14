@@ -3,24 +3,24 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { GoDotFill } from "react-icons/go";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useLayout } from "@/store/layout";
 
+// types
 type NavItemProps = {
   navLink: INavLink;
-  isMinimize: boolean;
-  setNavLinks: React.Dispatch<React.SetStateAction<INavLink[]>>;
-  navLinks: INavLink[];
-  togglMinimize: (isMinimize: boolean) => void;
 };
 
-function NavItem({
-  navLink,
-  isMinimize,
-  setNavLinks,
-  navLinks,
-  togglMinimize,
-}: NavItemProps) {
+function NavItem({ navLink }: NavItemProps) {
+  // initial variables
   const router = useRouter();
+  const pathname = usePathname();
+  const { setNavLinks, toggleMinimize, isMinimize, navLinks } = useLayout();
   const IconComponent = navLink.icon;
+  const url = new URL(navLink.route, "http://localhost:3000");
+
+  // state
+  const activeClass = `${pathname === url.pathname ? "bg-primary-foreground dark:bg-secondary" : ""}`;
 
   return (
     <div key={navLink.label} className="cursor-pointer">
@@ -28,7 +28,7 @@ function NavItem({
         key={navLink.label}
         onClick={() => {
           !navLink.sub?.length ? router.push(navLink.route) : null;
-          togglMinimize(false);
+          toggleMinimize(false);
           navLink.sub?.length &&
             setNavLinks(
               navLinks.map((link) => ({
@@ -37,9 +37,7 @@ function NavItem({
               })),
             );
         }}
-        className={`flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 hover:bg-primary-foreground dark:hover:bg-secondary ${
-          isMinimize ? "justify-center" : "justify-between"
-        }`}
+        className={`flex flex-row items-center gap-2 rounded-lg px-4 py-2.5 hover:bg-primary-foreground dark:hover:bg-secondary ${activeClass} ${isMinimize ? "justify-center" : "justify-between"}`}
       >
         <div className="flex flex-row items-center gap-2">
           <IconComponent className="w-6 h-6 text-primary" />
@@ -56,12 +54,12 @@ function NavItem({
         ) : null}
       </div>
       {navLink.isOpen && !isMinimize && navLink.sub?.length ? (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-2.5">
           {navLink.sub.map((subLink) => (
             <Link
               key={subLink.label}
               href={subLink.route}
-              className="flex w-full flex-row ml-4 items-center gap-2 rounded-lg px-4 py-2.5 hover:bg-primary-foreground dark:hover:bg-secondary"
+              className={`flex w-full flex-row ml-4 items-center gap-2 rounded-lg px-4 py-2.5 hover:bg-primary-foreground dark:hover:bg-secondary ${activeClass}`}
             >
               <GoDotFill className="w-4 h-4 text-primary" />
               <span className="text-sm font-semibold capitalize text-primary">

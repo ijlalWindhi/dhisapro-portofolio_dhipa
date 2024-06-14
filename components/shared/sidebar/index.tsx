@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -7,25 +7,17 @@ import {
   FiChevronsRight,
   FiAlignJustify,
 } from "react-icons/fi";
-import { navLinks as navLinksConstants } from "@/constants";
 import NavItem from "@/components/shared/sidebar/navItem";
 import BadgeUser from "@/components/shared/sidebar/badgeUser";
+import { useLayout } from "@/store/layout";
+import useIsMobile from "@/hook/useIsMobile";
 
 function Index() {
-  //  state
-  const [isMinimize, setIsMinimize] = useState(false);
-  const [isShow, setIsShow] = useState(false);
-  const [navLinks, setNavLinks] = useState<INavLink[]>(navLinksConstants);
+  //  initial variables
   const router = useRouter();
-
-  //   function
-  const togglMinimize = (isMinimize: boolean) => {
-    setIsMinimize(isMinimize);
-  };
-
-  const toggleShow = (isShow: boolean) => {
-    setIsShow(isShow);
-  };
+  const { isMinimize, isShow, navLinks, toggleMinimize, toggleShow } =
+    useLayout();
+  const isMobile = useIsMobile();
 
   return (
     <aside className="z-50 w-full md:h-full md:w-fit lg:relative lg:z-0">
@@ -49,8 +41,8 @@ function Index() {
               onClick={() => router.push("/")}
             />
             <button
-              className="hidden rounded-lg border p-2 md:block dark:border-primary"
-              onClick={() => togglMinimize(!isMinimize)}
+              className="hidden rounded-lg bg-primary-foreground dark:bg-secondary p-2 md:block"
+              onClick={() => toggleMinimize(!isMinimize)}
             >
               {isMinimize ? (
                 <FiChevronsRight className="w-6 h-6 text-primary" />
@@ -67,37 +59,25 @@ function Index() {
               </button>
             </div>
           </header>
-          <div className="hidden h-full flex-col gap-4 md:flex">
-            {navLinks.map((navLink) => (
-              <NavItem
-                key={navLink.label}
-                navLink={navLink}
-                isMinimize={isMinimize}
-                setNavLinks={setNavLinks}
-                navLinks={navLinks}
-                togglMinimize={togglMinimize}
-              />
-            ))}
-          </div>
-          {isShow ? (
-            <div className="absolute left-0 top-24 flex h-fit w-screen flex-col gap-3 bg-secondary py-4 dark:bg-primary-foreground md:hidden">
-              {navLinks.map((navLink) => (
-                <NavItem
-                  key={navLink.label}
-                  navLink={navLink}
-                  isMinimize={isMinimize}
-                  setNavLinks={setNavLinks}
-                  navLinks={navLinks}
-                  togglMinimize={togglMinimize}
-                />
-              ))}
-            </div>
-          ) : null}
-          <BadgeUser
-            minimize={isMinimize}
-            isMinimize={isMinimize}
-            toggleMinimize={togglMinimize}
-          />
+          {isMobile ? (
+            isShow && (
+              <div className="absolute left-0 top-24 flex h-fit w-screen flex-col gap-3 bg-secondary py-4 dark:bg-primary-foreground">
+                {navLinks.map((navLink) => (
+                  <NavItem key={navLink.label} navLink={navLink} />
+                ))}
+                <BadgeUser />
+              </div>
+            )
+          ) : (
+            <>
+              <div className="h-full flex-col gap-4 flex">
+                {navLinks.map((navLink) => (
+                  <NavItem key={navLink.label} navLink={navLink} />
+                ))}
+              </div>
+              <BadgeUser />
+            </>
+          )}
         </div>
       </div>
     </aside>

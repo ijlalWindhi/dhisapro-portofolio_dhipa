@@ -13,12 +13,7 @@ export const navLinks: INavLink[] = [
     label: "Projects",
     route: "/projects",
     icon: IoDocumentTextOutline,
-    sub: [
-      {
-        label: "Create Next App",
-        route: "/projects/create-next-app",
-      },
-    ],
+    sub: [],
     isOpen: false,
   },
 ];
