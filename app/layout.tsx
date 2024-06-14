@@ -2,12 +2,25 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/shared/sidebar";
+import { METADATA } from "@/constants/metadata";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Next.js Starter",
-  description: "Next.js Starter by Dhisa Production",
+  description: METADATA.description,
+  keywords: METADATA.keyword,
+  creator: METADATA.creator,
+  authors: {
+    name: METADATA.creator,
+    url: METADATA.openGraph.url,
+  },
+  openGraph: {
+    images: METADATA.profile,
+    url: METADATA.openGraph.url,
+    siteName: METADATA.openGraph.siteName,
+    locale: METADATA.openGraph.locale,
+    type: "website",
+  },
 };
 
 export default function RootLayout({

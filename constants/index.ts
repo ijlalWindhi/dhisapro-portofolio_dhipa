@@ -10,10 +10,15 @@ export const navLinks: INavLink[] = [
     isOpen: false,
   },
   {
-    label: "Projects",
-    route: "/projects",
+    label: "Project",
+    route: "/project",
     icon: IoDocumentTextOutline,
-    sub: [],
+    sub: [
+      {
+        label: "Internal",
+        route: "/project",
+      },
+    ],
     isOpen: false,
   },
 ];
