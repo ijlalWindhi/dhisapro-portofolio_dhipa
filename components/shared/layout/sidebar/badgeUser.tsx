@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useLayout } from "@/store/layout";
-import ThemeToggle from "@/components/shared/sidebar/themeToggle";
+import ThemeToggle from "@/components/shared/layout/sidebar/themeToggle";
 
 interface IBadgeUser {
   className?: string;

@@ -7,8 +7,8 @@ import {
   FiChevronsRight,
   FiAlignJustify,
 } from "react-icons/fi";
-import NavItem from "@/components/shared/sidebar/navItem";
-import BadgeUser from "@/components/shared/sidebar/badgeUser";
+import NavItem from "@/components/shared/layout/sidebar/navItem";
+import BadgeUser from "@/components/shared/layout/sidebar/badgeUser";
 import { useLayout } from "@/store/layout";
 import useIsMobile from "@/hook/useIsMobile";
 
