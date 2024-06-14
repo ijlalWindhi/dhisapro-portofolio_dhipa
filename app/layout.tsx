@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/shared/sidebar";
+import Sidebar from "@/components/shared/layout/sidebar";
+import Footer from "@/components/shared/layout/footer";
+import Header from "@/components/shared/layout/header";
 import { METADATA } from "@/constants/metadata";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -35,15 +37,11 @@ export default function RootLayout({
           <Sidebar />
           <div className="relative flex h-full max-w-full flex-1 overflow-auto">
             <div className="flex h-full w-full flex-col">
-              {/* <GeneralHeader
-          className="h-20 w-full bg-white px-6 py-4"
-          :header_name="header_name"
-          :header_icon="header_icon"
-        /> */}
+              <Header />
               <div className="h-full w-full overflow-auto dark:bg-gray-950 bg-slate-50 px-6 py-4">
                 {children}
               </div>
-              {/* <GeneralFooter className="h-fit w-full bg-white px-6 py-4" /> */}
+              <Footer />
             </div>
           </div>
         </main>
