@@ -2,15 +2,14 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import {
-  FiChevronsLeft,
-  FiChevronsRight,
-  FiAlignJustify,
-} from "react-icons/fi";
+import { ChevronLeft, ChevronRight, AlignJustify } from "lucide-react";
 import NavItem from "@/components/shared/layout/sidebar/navItem";
-import BadgeUser from "@/components/shared/layout/sidebar/badgeUser";
+import { Button } from "@/components/ui/button";
 import { useLayout } from "@/store/layout";
 import useIsMobile from "@/hook/useIsMobile";
+import ThemeToggle from "@/components/shared/layout/sidebar/themeToggle";
+import Notification from "@/components/shared/layout/sidebar/notification";
+import Profile from "@/components/shared/layout/sidebar/profile";
 
 function Index() {
   //  initial variables
@@ -32,40 +31,52 @@ function Index() {
           <header
             className={`inline-flex h-fit w-full items-center gap-2.5 ${isMinimize ? "flex-col justify-center" : "flex-row justify-between"}`}
           >
+            {/* Logo */}
             <Image
               src="/assets/images/logo.png"
-              className={`cursor-pointer ${isMinimize ? "mb-2 ml-0" : "md:ml-6"}`}
+              className={`cursor-pointer bg-primary dark:bg-background rounded-full ${isMinimize ? "mb-2 ml-0" : "md:ml-6"}`}
               alt="Logo"
-              width={70}
-              height={70}
+              width={60}
+              height={60}
               onClick={() => router.push("/")}
             />
-            <button
-              className="hidden rounded-lg bg-primary-foreground dark:bg-secondary p-2 md:block"
+            <Button
+              variant="outline"
+              type="button"
+              size="icon"
+              className="hidden md:inline-flex"
               onClick={() => toggleMinimize(!isMinimize)}
             >
               {isMinimize ? (
-                <FiChevronsRight className="w-6 h-6 text-primary" />
+                <ChevronRight className="w-6 h-6" />
               ) : (
-                <FiChevronsLeft className="w-6 h-6 text-primary" />
+                <ChevronLeft className="w-6 h-6" />
               )}
-            </button>
+            </Button>
+            {/* Show when in mobile screen */}
             <div className="flex items-center gap-4 sm:gap-6 md:hidden">
-              <button
-                className="rounded-lg border p-2"
-                onClick={() => toggleShow(!isShow)}
-              >
-                <FiAlignJustify className="w-6 h-6 text-primary" />
-              </button>
+              <div className="flex justify-between gap-2 px-4">
+                <ThemeToggle />
+                <Notification />
+                <Profile />
+                <Button
+                  variant="outline"
+                  type="button"
+                  size="icon"
+                  className="rounded-lg border p-2"
+                  onClick={() => toggleShow(!isShow)}
+                >
+                  <AlignJustify className="w-6 h-6 text-primary" />
+                </Button>
+              </div>
             </div>
           </header>
           {isMobile ? (
             isShow && (
-              <div className="absolute left-0 top-24 flex h-fit w-screen flex-col gap-3 bg-secondary py-4 dark:bg-primary-foreground">
+              <div className="absolute left-0 top-20 flex h-fit w-screen flex-col gap-3 bg-secondary py-4 dark:bg-primary-foreground">
                 {navLinks.map((navLink) => (
                   <NavItem key={navLink.label} navLink={navLink} />
                 ))}
-                <BadgeUser />
               </div>
             )
           ) : (
@@ -75,7 +86,6 @@ function Index() {
                   <NavItem key={navLink.label} navLink={navLink} />
                 ))}
               </div>
-              <BadgeUser />
             </>
           )}
         </div>

@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/shared/layout/sidebar/themeToggle";
 import { navLinks } from "@/constants";
+import Notification from "@/components/shared/layout/sidebar/notification";
+import Profile from "@/components/shared/layout/sidebar/profile";
 
 function Header() {
   // initial variables
@@ -13,11 +16,21 @@ function Header() {
   });
 
   return (
-    <header className="hidden justify-between bg-white px-6 py-4 dark:bg-gray-900 md:inline-flex">
-      <div className="inline-flex items-center gap-3">
+    <header className="hidden justify-between bg-secondary px-6 py-4 dark:bg-primary-foreground md:inline-flex">
+      <div className="inline-flex items-center justify-between gap-3 w-full">
         <h1 className="items-center text-lg font-semibold text-primary-500">
           {label}
         </h1>
+        <div className="flex gap-4 items-center">
+          {/* Toggle Theme */}
+          <ThemeToggle />
+
+          {/* Notification  */}
+          <Notification />
+
+          {/* Profile */}
+          <Profile />
+        </div>
       </div>
     </header>
   );
