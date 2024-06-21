@@ -6,7 +6,7 @@ const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(width < 769);
 
   useEffect(() => {
-    setIsMobile(width < 821);
+    setIsMobile(width < 769);
   }, [width]);
 
   return isMobile;
