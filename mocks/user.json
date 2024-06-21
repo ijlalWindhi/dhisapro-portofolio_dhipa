@@ -1,0 +1,32 @@
+[
+  {
+    "avatar": null,
+    "name": "Olivia Martin",
+    "email": "olivia.martin@dhisapro.com",
+    "income": 1000
+  },
+  {
+    "avatar": null,
+    "name": "John Doe",
+    "email": "john.doe@dhisapro.com",
+    "income": 2000
+  },
+  {
+    "avatar": null,
+    "name": "Jackson Lee",
+    "email": "jackson.lee@dhisapro.com",
+    "income": 500
+  },
+  {
+    "avatar": null,
+    "name": "Isabella Nguyen",
+    "email": "isabella.nguyen@dhisapro.com",
+    "income": 800
+  },
+  {
+    "avatar": null,
+    "name": "Sofia Davis",
+    "email": "sofia.davis@dhisapro.com",
+    "income": 900
+  }
+]

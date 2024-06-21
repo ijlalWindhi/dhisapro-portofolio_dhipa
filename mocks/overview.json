@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Jan",
+    "total": 1000
+  },
+  {
+    "name": "Feb",
+    "total": 800
+  },
+  {
+    "name": "Mar",
+    "total": 900
+  },
+  {
+    "name": "Apr",
+    "total": 700
+  },
+  {
+    "name": "May",
+    "total": 600
+  },
+  {
+    "name": "Jun",
+    "total": 800
+  },
+  {
+    "name": "Jul",
+    "total": 900
+  },
+  {
+    "name": "Aug",
+    "total": 1000
+  },
+  {
+    "name": "Sep",
+    "total": 500
+  },
+  {
+    "name": "Oct",
+    "total": 300
+  },
+  {
+    "name": "Nov",
+    "total": 800
+  },
+  {
+    "name": "Dec",
+    "total": 500
+  }
+]
