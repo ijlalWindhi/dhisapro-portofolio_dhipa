@@ -5,7 +5,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -30,11 +29,14 @@ function Notification() {
         {notification.length > 0 ? (
           notification.map((menu, index) => {
             return (
-              <DropdownMenuItem key={index}>
-                <div className="flex items-center gap-2">
-                  <p className="text-sm">{menu?.description}</p>
-                </div>
-              </DropdownMenuItem>
+              <>
+                <DropdownMenuItem key={index}>
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm">{menu?.description}</p>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+              </>
             );
           })
         ) : (
