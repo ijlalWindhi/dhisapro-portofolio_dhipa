@@ -69,7 +69,7 @@ export default function Home() {
         </div>
       </div>
       <Tabs defaultValue={MenuItem[0]} className="w-full">
-        <TabsList className="max-w-full overflow-auto w-full xs:w-fit">
+        <TabsList className="max-w-full h-full overflow-x-auto w-full xs:w-fit">
           {MenuItem.map((item) => (
             <TabsTrigger key={item} value={item}>
               {item}
