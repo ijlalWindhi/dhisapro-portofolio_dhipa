@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/shared/layout/sidebar";
 import Footer from "@/components/shared/layout/footer";
 import Header from "@/components/shared/layout/header";
 import { METADATA } from "@/constants/metadata";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
   description: METADATA.description,
@@ -32,13 +35,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <main className="relative flex h-screen w-screen flex-col font-sans md:flex-row">
           <Sidebar />
           <div className="relative flex h-full max-w-full flex-1 overflow-auto">
             <div className="flex h-full w-full flex-col">
               <Header />
-              <div className="h-full w-full overflow-auto dark:bg-gray-950 bg-slate-50 px-6 py-4">
+              <div className="h-full w-full overflow-auto dark:bg-gray-950 bg-slate-50 p-3 md:px-6 md:py-4">
                 {children}
               </div>
               <Footer />
