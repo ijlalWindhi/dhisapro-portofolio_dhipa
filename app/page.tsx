@@ -11,8 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Overview from "@/components/pages/dashboard/Overview";
-import RecentSales from "@/components/pages/dashboard/RecentSales";
+import Overview from "@/components/pages/dashboard/overview";
+import RecentSales from "@/components/pages/dashboard/recentSales";
 import { METADATA } from "@/constants/metadata";
 import { MenuItem } from "@/constants/dashboard";
 
