@@ -16,13 +16,19 @@ export const useLayout = create<ILayoutType>()((set) => ({
   isMinimize: false,
   isShow: false,
   navLinks: navLinksConstants,
-  theme: localStorage.getItem("theme") || "light",
+  theme:
+    typeof window != "undefined"
+      ? localStorage.getItem("theme") ?? "light"
+      : "light",
   toggleMinimize: (isMinimize: boolean) => set({ isMinimize }),
   toggleShow: (isShow: boolean) => set({ isShow }),
   toggleTheme: () => {
-    const theme = localStorage.getItem("theme") === "light" ? "dark" : "light";
-    localStorage.setItem("theme", theme);
-    set({ theme });
+    if (typeof window != "undefined") {
+      const theme =
+        localStorage.getItem("theme") === "light" ? "dark" : "light";
+      localStorage.setItem("theme", theme);
+      set({ theme });
+    }
   },
   setNavLinks: (navLinks: INavLink[]) => set({ navLinks }),
 }));
