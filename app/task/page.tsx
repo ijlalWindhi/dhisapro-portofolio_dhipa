@@ -1,16 +1,38 @@
-import type { Metadata } from "next";
-import { METADATA } from "@/constants/metadata";
+// import type { Metadata } from "next";
+// import { METADATA } from "@/constants/metadata";
+import { z } from "zod";
+import Heading from "@/components/shared/layout/heading";
+import Table from "@/components/pages/task/table";
+import { columns } from "@/components/pages/task/columns";
+import tasks from "@/mocks/task.json";
 
-export const metadata: Metadata = {
-  title: `Home ${METADATA.exTitle}`,
-  description: `Page home ${METADATA.creator}`,
-  alternates: {
-    canonical: `${process.env.DOMAIN}/about`,
-  },
-};
+// export const metadata: Metadata = {
+//   title: `Task ${METADATA.exTitle}`,
+//   description: `Task ${METADATA.creator}`,
+//   alternates: {
+//     canonical: `${process.env.DOMAIN}/task`,
+//   },
+// };
+
+export const taskSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  status: z.string(),
+  label: z.string(),
+  priority: z.string(),
+});
+export type Task = z.infer<typeof taskSchema>;
 
 function page() {
-  return <div>page</div>;
+  return (
+    <section className="flex flex-col gap-4">
+      <Heading
+        title="Welcome back!"
+        description="Here's a list of your tasks for this month!"
+      />
+      <Table data={tasks} columns={columns} />
+    </section>
+  );
 }
 
 export default page;
