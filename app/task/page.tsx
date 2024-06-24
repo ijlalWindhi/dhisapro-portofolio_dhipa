@@ -14,15 +14,6 @@ import tasks from "@/mocks/task.json";
 //   },
 // };
 
-export const taskSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  status: z.string(),
-  label: z.string(),
-  priority: z.string(),
-});
-export type Task = z.infer<typeof taskSchema>;
-
 function page() {
   return (
     <section className="flex flex-col gap-4">

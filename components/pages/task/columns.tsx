@@ -1,13 +1,20 @@
 "use client";
 import { ColumnDef } from "@tanstack/react-table";
-
+import { z } from "zod";
 import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import ColumnHeader from "@/components/pages/task/columnHeader";
 import RowAction from "@/components/pages/task/rowAction";
-
 import { labels, priorities, status } from "@/constants/task";
-import { Task } from "@/app/task/page";
+
+const taskSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  status: z.string(),
+  label: z.string(),
+  priority: z.string(),
+});
+type Task = z.infer<typeof taskSchema>;
 
 export const columns: ColumnDef<Task>[] = [
   {

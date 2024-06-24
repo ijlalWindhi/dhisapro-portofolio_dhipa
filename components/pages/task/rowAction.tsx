@@ -1,6 +1,6 @@
 import { EllipsisVertical } from "lucide-react";
+import { z } from "zod";
 import { Row } from "@tanstack/react-table";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -15,14 +15,18 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
 import { labels } from "@/constants/task";
-import { taskSchema } from "@/app/task/page";
-
 interface IRowActionsProps<TData> {
   readonly row: Row<TData>;
 }
 
+const taskSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  status: z.string(),
+  label: z.string(),
+  priority: z.string(),
+});
 function RowActions<TData>({ row }: IRowActionsProps<TData>) {
   const task = taskSchema.parse(row.original);
 
