@@ -14,7 +14,12 @@ function Notification() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="rounded-full">
+        <Button
+          variant="outline"
+          size="icon"
+          className="rounded-full"
+          aria-label="notification"
+        >
           {notification.length > 0 ? (
             <BellDot className="h-5 w-5" />
           ) : (

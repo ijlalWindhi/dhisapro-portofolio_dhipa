@@ -46,6 +46,7 @@ function Index() {
               size="icon"
               className="hidden md:inline-flex"
               onClick={() => toggleMinimize(!isMinimize)}
+              aria-label="Toggle Sidebar"
             >
               {isMinimize ? (
                 <ChevronRight className="w-6 h-6" />
@@ -65,6 +66,7 @@ function Index() {
                   size="icon"
                   className="rounded-lg border p-2"
                   onClick={() => toggleShow(!isShow)}
+                  aria-label="Toggle Sidebar"
                 >
                   <AlignJustify className="w-6 h-6 text-primary" />
                 </Button>

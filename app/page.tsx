@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: `Dashboard ${METADATA.exTitle}`,
   description: `Page dashboard ${METADATA.creator}`,
   alternates: {
-    canonical: `${process.env.DOMAIN}`,
+    canonical: `${METADATA.url}`,
   },
 };
 

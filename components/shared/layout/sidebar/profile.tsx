@@ -19,6 +19,7 @@ function Profile() {
           <AvatarImage
             className="bg-primary dark:bg-background rounded-full"
             src="/assets/images/logo.png"
+            alt="User profile picture"
           />
           <AvatarFallback>DP</AvatarFallback>
         </Avatar>

@@ -20,6 +20,7 @@ function ThemeToggle() {
       size="icon"
       className="rounded-full"
       onClick={toggleTheme}
+      aria-label="Toggle Theme"
     >
       {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
     </Button>
