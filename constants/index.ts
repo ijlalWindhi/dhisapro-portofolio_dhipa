@@ -1,4 +1,10 @@
-import { LayoutDashboard, SquareCheck } from "lucide-react";
+import {
+  LayoutDashboard,
+  SquareCheck,
+  ShieldAlert,
+  AppWindow,
+  Users,
+} from "lucide-react";
 
 export const navLinks: INavLink[] = [
   {
@@ -15,18 +21,44 @@ export const navLinks: INavLink[] = [
     sub: [],
     isOpen: false,
   },
-  // {
-  //   label: "Project",
-  //   route: "/project",
-  //   icon: File,
-  //   sub: [
-  //     {
-  //       label: "Internal",
-  //       route: "/project",
-  //     },
-  //   ],
-  //   isOpen: false,
-  // },
+  {
+    label: "Error Page",
+    route: "/",
+    icon: ShieldAlert,
+    sub: [
+      {
+        label: "Not Found",
+        route: "/404",
+      },
+      {
+        label: "Internal Server Error",
+        route: "/500",
+      },
+      {
+        label: "Maintenance",
+        route: "/maintenance",
+      },
+      {
+        label: "Under Development",
+        route: "/under-development",
+      },
+    ],
+    isOpen: false,
+  },
+  {
+    label: "App Integration",
+    route: "/app-integration",
+    icon: AppWindow,
+    sub: [],
+    isOpen: false,
+  },
+  {
+    label: "User Management",
+    route: "/user-management",
+    icon: Users,
+    sub: [],
+    isOpen: false,
+  },
 ];
 
 export const profileMenu: IProfileMenu[] = [
