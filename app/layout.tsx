@@ -41,10 +41,12 @@ export default function RootLayout({
           <div className="relative flex h-full max-w-full flex-1 overflow-auto">
             <div className="flex h-full w-full flex-col">
               <Header />
-              <div className="h-full w-full overflow-auto dark:bg-gray-950 bg-slate-50 p-3 md:px-6 md:py-4">
-                {children}
+              <div className="w-full h-auto">
+                <div className="w-full min-h-screen dark:bg-gray-950 bg-slate-50 p-3 md:px-6 md:py-4">
+                  {children}
+                </div>
+                <Footer />
               </div>
-              <Footer />
             </div>
           </div>
         </main>

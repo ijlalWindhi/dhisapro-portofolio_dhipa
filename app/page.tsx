@@ -11,8 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Overview from "@/components/pages/dashboard/Overview";
-import RecentSales from "@/components/pages/dashboard/RecentSales";
+import Overview from "@/components/pages/dashboard/overview";
+import RecentSales from "@/components/pages/dashboard/recentSales";
 import { METADATA } from "@/constants/metadata";
 import { MenuItem } from "@/constants/dashboard";
 
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
       </div>
       <Tabs defaultValue={MenuItem[0]} className="w-full">
-        <TabsList className="max-w-full overflow-auto w-full xs:w-fit">
+        <TabsList className="max-w-full h-full overflow-x-auto w-full xs:w-fit">
           {MenuItem.map((item) => (
             <TabsTrigger key={item} value={item}>
               {item}
